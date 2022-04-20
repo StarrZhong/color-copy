@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <title>color pick copy</title>
+</head>
+<body>
+  
+  <div class="wrapper">
+    <div id="app" v-cloak>
+      <div class="container">
+        <div class="color-section" v-for="item in colorData">
+          <h2 class="section-title">{{item.title}}</h2>
+          <ul class="color-list">
+            <li class="color-list__item" v-for="cItem in item.colorList">
+              <button class="color-list__btn" :data-clipboard-text="cItem.value">
+                <div class="color-list__rect":style="'background-color:'+cItem.code" ></div>
+                <div class="color-list__txt">
+                  <h3 class="color-list__title">{{cItem.name}}</h3>
+                  <p class="color-list__code">{{cItem.code}}</p>
+                </div>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="pop-msg" :class="{'pop-msg--show': showCopied}">
+        <span>複製:</span>
+        <span>{{copyValue}}</span>
+      </div>
+    </div>
+  </div>
+  <script src="js/sourceData.js"></script>
+  <script src="js/index.bundle.js"></script>
+</body>
+</html>
